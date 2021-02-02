@@ -5,16 +5,16 @@ import csv
 import os
 import time
 
-SALES_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "sales.csv"))
+TOPUP_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "topup.csv"))
 
 
-def append_sale(item, price, customer):
+def append_topup(customer, amount):
     date_str = time.strftime("%Y-%m-%d")
     time_str = time.strftime("%H:%M:%S")
     try:
-        with open(SALES_PATH, mode='a', newline='') as csv_file:
+        with open(TOPUP_PATH, mode='a', newline='') as csv_file:
             writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-            writer.writerow([item, price, customer, date_str, time_str])
+            writer.writerow([customer, amount, date_str, time_str])
         return 0
     except Exception as e:
         return 1
@@ -22,4 +22,4 @@ def append_sale(item, price, customer):
 
 if __name__ == "__main__":
     #print(save_tabs([["Kie", 10.00], ["Ben", 14.21]]))
-    print(append_sale("the best stuff", 14.22, "alan"))
+    print(append_topup("test", 0.01))

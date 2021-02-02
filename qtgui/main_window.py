@@ -9,7 +9,6 @@
 # -------------------------------------------------------------------------------
 
 from qtgui.gen import MainWindowGenerated
-from qtgui.gen import confirmGenerated
 from qtgui.window import Window
 from qtgui.logger import init_console_logger
 
@@ -32,6 +31,7 @@ from core.drinks import (rum,
 from core.tabs import (load_tabs,
                        save_tabs)
 from core.sales import append_sale
+from core.topup import append_topup
 
 logger = init_console_logger(name="gui")
 
@@ -204,9 +204,13 @@ class MainWindow(Window):
                 return
         self.ui.tableWidget_tabs.setItem(tab_row, 1, QTableWidgetItem("%.2f" % new_balance))
         self.append_sales_to_log()
+        txt = ""
+        for r in range(self.ui.tableWidget_till.rowCount()):
+            txt += "\n    " + str(self.ui.tableWidget_till.item(r, 0).text())
+        self.append_to_history("{} spent £{}".format(patron_name, "%.2f" % total) + txt)
         self.clear_till()
         self.save_tabs()
-        self.append_to_history("{} spent £{}".format(patron_name, "%.2f" % total))
+
 
     def top_up(self):
         """ adds credit to a customer's tab """
@@ -222,6 +226,7 @@ class MainWindow(Window):
         new_balance = topup_amount + tab_balance
         self.ui.tableWidget_tabs.setItem(tab_row, 1, QTableWidgetItem("%.2f" % new_balance))
         self.append_to_history("{} topped-up £{}".format(patron_name, "%.2f" % topup_amount))
+        append_topup(patron_name, topup_amount)
         self.save_tabs()
 
     def clear_till(self):
@@ -328,10 +333,6 @@ class MainWindow(Window):
                         str(self.ui.tableWidget_till.item(r, 1).text()),
                         patron)
         logger.debug("sale saved")
-
-    def append_topup_to_log(self):
-        """ appends a top-up to the log file """
-        pass
 
     def manually_set_tab(self):
         if len(self.ui.tableWidget_tabs.selectedItems()) == 0:
