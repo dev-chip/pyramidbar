@@ -60,19 +60,20 @@ class MainWindow(Window):
                              self.ui.pushButton_vodka,
                              self.ui.pushButton_gin,
                              self.ui.pushButton_amaretto,
-                             self.ui.pushButton_cocktails]
-        self.ui.tableWidget_menu.setColumnWidth(0, 210)
-        self.ui.tableWidget_menu.setColumnWidth(1, 70)
+                             self.ui.pushButton_cocktails,
+                             self.ui.pushButton_beer]
+        self.ui.tableWidget_menu.setColumnWidth(0, 270)
+        self.ui.tableWidget_menu.setColumnWidth(1, 80)
         self.menu_all()
 
         logger.verbose("Setting up till table widget...")
-        self.ui.tableWidget_till.setColumnWidth(0, 150)
-        self.ui.tableWidget_till.setColumnWidth(1, 70)
+        self.ui.tableWidget_till.setColumnWidth(0, 230)
+        self.ui.tableWidget_till.setColumnWidth(1, 80)
 
         logger.verbose("Setting up tab table widget...")
         self.load_tabs()
-        self.ui.tableWidget_tabs.setColumnWidth(0, 130)
-        self.ui.tableWidget_tabs.setColumnWidth(1, 70)
+        self.ui.tableWidget_tabs.setColumnWidth(0, 190)
+        self.ui.tableWidget_tabs.setColumnWidth(1, 80)
 
         self.last_sale = time.time()
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\cooki\OneDrive\Documents\workspace_home\projects\pyramidbar\qtgui\ui\numpad.ui'
+# Form implementation generated from reading ui file 'C:\Users\cooki\Desktop\pyramidbar\qtgui\ui\numpad.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.0
 #
