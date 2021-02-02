@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1323</width>
+    <width>1413</width>
     <height>611</height>
    </rect>
   </property>
@@ -727,7 +727,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1323</width>
+     <width>1413</width>
      <height>31</height>
     </rect>
    </property>
@@ -748,6 +748,7 @@
     <addaction name="menuLog_Level"/>
     <addaction name="actionToggle_developer_log"/>
     <addaction name="action_update_tabs_from_file"/>
+    <addaction name="actionOpen_tabs_file"/>
    </widget>
    <widget class="QMenu" name="menuTabs">
     <property name="title">
@@ -757,8 +758,17 @@
     <addaction name="actionRemove_patron"/>
     <addaction name="action_manually_set_tab"/>
    </widget>
+   <widget class="QMenu" name="menuLog_Files">
+    <property name="title">
+     <string>Log Files</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="action_open_sales_log"/>
+    <addaction name="action_open_top_up_log"/>
+   </widget>
    <addaction name="menuDeveloper"/>
    <addaction name="menuTabs"/>
+   <addaction name="menuLog_Files"/>
   </widget>
   <action name="actionDISABLE">
    <property name="checkable">
@@ -815,12 +825,12 @@
   </action>
   <action name="actionAdd_patron">
    <property name="text">
-    <string>New patron</string>
+    <string>New patron...</string>
    </property>
   </action>
   <action name="actionRemove_patron">
    <property name="text">
-    <string>Remove patron</string>
+    <string>Remove patron...</string>
    </property>
   </action>
   <action name="action_update_tabs_from_file">
@@ -830,7 +840,22 @@
   </action>
   <action name="action_manually_set_tab">
    <property name="text">
-    <string>Manually set tab</string>
+    <string>Manually set tab...</string>
+   </property>
+  </action>
+  <action name="action_open_sales_log">
+   <property name="text">
+    <string>Open sales log</string>
+   </property>
+  </action>
+  <action name="action_open_top_up_log">
+   <property name="text">
+    <string>Open top-up log</string>
+   </property>
+  </action>
+  <action name="actionOpen_tabs_file">
+   <property name="text">
+    <string>Open tabs file...</string>
    </property>
   </action>
  </widget>

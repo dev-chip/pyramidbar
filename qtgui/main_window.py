@@ -14,6 +14,7 @@ from qtgui.logger import init_console_logger
 
 from PyQt5.QtWidgets import QTableWidgetItem
 import time
+import os
 
 from qtgui.show_dialog import (show_message_dialog,
                                show_confirm_dialog,
@@ -30,8 +31,8 @@ from core.drinks import (rum,
                          beer)
 from core.tabs import (load_tabs,
                        save_tabs)
-from core.sales import append_sale
-from core.topup import append_topup
+from core.sales import append_sale, SALES_PATH
+from core.topup import append_topup, TOPUP_PATH
 
 logger = init_console_logger(name="gui")
 
@@ -79,8 +80,6 @@ class MainWindow(Window):
 
         logger.info("GUI initialised")
 
-
-
     def init_signals(self):
         """
             Initialises widget signals
@@ -91,6 +90,10 @@ class MainWindow(Window):
 
         self.ui.actionAdd_patron.triggered.connect(self.add_tab)
         self.ui.actionRemove_patron.triggered.connect(self.remove_tab)
+
+        self.ui.action_open_top_up_log.triggered.connect(self.open_topup_log_file)
+        self.ui.action_open_sales_log.triggered.connect(self.open_sales_log_file)
+
 
         self.ui.pushButton_all.clicked.connect(self.menu_all)
         self.ui.pushButton_rum.clicked.connect(self.menu_rum)
@@ -366,6 +369,12 @@ class MainWindow(Window):
             self.ui.textEdit_history.append("")
         self.last_sale = time.time()
         self.ui.textEdit_history.append("[{}] {}".format(time.strftime("%H:%M:%S"), text))
+
+    def open_topup_log_file(self):
+        os.system("start " + TOPUP_PATH)
+
+    def open_sales_log_file(self):
+        os.system("start " + SALES_PATH)
 
 
 if __name__ == "__main__":
