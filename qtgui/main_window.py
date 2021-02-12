@@ -28,7 +28,7 @@ from core.drinks import (rum,
                          amaretto,
                          cocktails,
                          all_drinks,
-                         beer)
+                         bottles)
 from core.tabs import (load_tabs,
                        save_tabs)
 from core.sales import append_sale, SALES_PATH
@@ -62,7 +62,7 @@ class MainWindow(Window):
                              self.ui.pushButton_gin,
                              self.ui.pushButton_amaretto,
                              self.ui.pushButton_cocktails,
-                             self.ui.pushButton_beer]
+                             self.ui.pushButton_bottles]
         self.ui.tableWidget_menu.setColumnWidth(0, 270)
         self.ui.tableWidget_menu.setColumnWidth(1, 80)
         self.menu_all()
@@ -102,7 +102,7 @@ class MainWindow(Window):
         self.ui.pushButton_gin.clicked.connect(self.menu_gin)
         self.ui.pushButton_amaretto.clicked.connect(self.menu_amaretto)
         self.ui.pushButton_cocktails.clicked.connect(self.menu_cocktails)
-        self.ui.pushButton_beer.clicked.connect(self.menu_beer)
+        self.ui.pushButton_bottles.clicked.connect(self.menu_bottles)
 
         self.ui.tableWidget_menu.cellClicked.connect(self.add_selected_item_to_till)
         self.ui.tableWidget_till.cellClicked.connect(self.till_item_selected)
@@ -157,11 +157,11 @@ class MainWindow(Window):
         self.ui.pushButton_cocktails.setEnabled(False)
         self.set_menu_items(cocktails)
 
-    def menu_beer(self):
-        logger.debug("showing menu 'beer'")
+    def menu_bottles(self):
+        logger.debug("showing menu 'bottles'")
         self.enable_all_menu_buttons()
-        self.ui.pushButton_beer.setEnabled(False)
-        self.set_menu_items(beer)
+        self.ui.pushButton_bottles.setEnabled(False)
+        self.set_menu_items(bottles)
 
     def toggle_developer_log(self):
         self.ui.textEdit.setVisible(not self.ui.textEdit.isVisible())
@@ -210,7 +210,7 @@ class MainWindow(Window):
         self.append_sales_to_log()
         txt = ""
         for r in range(self.ui.tableWidget_till.rowCount()):
-            txt += "\n    " + str(self.ui.tableWidget_till.item(r, 0).text())
+            txt += "\n    " + str(self.ui.tableWidget_till.item(r, 0).text()) + " £" + "%.2f" % float(self.ui.tableWidget_till.item(r, 1).text())
         self.append_to_history("{} spent £{}".format(patron_name, "%.2f" % total) + txt)
         self.clear_till()
         self.save_tabs()

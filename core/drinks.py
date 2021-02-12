@@ -48,14 +48,15 @@ cocktails = [
     ["Chip's Signature Cuba Libre", 4.0],
     ["Long Island", 4.0],
     ["Zombie", 4.5],
-    ["Large Sex on the Beach", 5.0],
-    ["Large Godfather", 5.0],
-    ["Large Blue Lagoon",  5.0],
+    ["Large Sex on the Beach", 4.5],
+    ["Large Godfather", 4.5],
+    ["Large Blue Lagoon",  4.5]
     ]
 
-beer = [["corona", 1.5]]
+bottles = [["corona", 1.5],
+           ["VK Orange", 2.5]]
 
-all_drinks = rum + whiskey + vodka + gin + amaretto + cocktails + beer
+all_drinks = rum + whiskey + vodka + gin + amaretto + cocktails + bottles
 
 
 if __name__ == "__main__":

@@ -199,7 +199,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_beer">
+            <widget class="QPushButton" name="pushButton_bottles">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -217,7 +217,7 @@
               <string notr="true">QPushButton{background-color: rgb(220,179,179)}</string>
              </property>
              <property name="text">
-              <string>Beer</string>
+              <string>Bottles</string>
              </property>
             </widget>
            </item>
@@ -728,7 +728,7 @@
      <x>0</x>
      <y>0</y>
      <width>1413</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDeveloper">
